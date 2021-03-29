@@ -12,8 +12,10 @@ export const TodoForm: React.FunctionComponent<TodoFormProps> = ({
     setNewTodo(e.target.value);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    await fetch("https://iu9ku2mwp2.execute-api.us-west-2.amazonaws.com/todos")
+    .then()
     addTodo(newTodo);
   };
 

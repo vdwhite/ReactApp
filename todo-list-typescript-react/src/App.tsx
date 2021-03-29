@@ -1,36 +1,26 @@
 import React, { useState } from "react";
-import { TodoList } from "./components/todoList.component";
-import { TodoForm } from "./components/todoForm.component";
+import Form from "./components/form";
+import TodoList from "./components/todoList";
 
-const initialTodoItems: Array<Todo> = [
-  { text: "sleep", completedStatus: false },
-  { text: "movies", completedStatus: true },
-];
+function App() {
+  const [inputText, setInputText] = useState("");
+  const [todos, setTodos] = useState([]);
+  const props = {
+    inputText: inputText,
+    setInputText: setInputText,
+    todos: todos,
+    setTodos: setTodos,
+  };
 
-const App = () => {
-  const [todoItems, setTodos] = useState(initialTodoItems);
-  const todoToggles: TodoToggle = (selectedTodoItem) => {
-    const newTodos = todoItems.map((todoItem: Todo) => {
-      if (todoItem === selectedTodoItem) {
-        return {
-          ...todoItem,
-          completedStatus: !todoItem.completedStatus,
-        };
-      }
-      return todoItem;
-    });
-    setTodos(newTodos);
-  };
-  const addTodo: AddTodo = (newTodo) => {
-    newTodo.trim() &&
-      setTodos([...todoItems, { text: newTodo, completedStatus: false }]);
-  };
+  console.log("length" + props.todos.length);
   return (
-    <div>
-      <TodoList todoItems={todoItems} todoToggle={todoToggles} />
-      <TodoForm addTodo={addTodo} />
+    <div className="App">
+      <header>
+        <h1>Todo List React</h1>
+      </header>
+      <Form {...props} />
     </div>
   );
-};
+}
 
 export default App;

@@ -8,11 +8,11 @@ interface TodoItemProps {
 
 export const TodoItem: React.FunctionComponent<TodoItemProps> = ({
   todo,
-  todoToggle,
+  todoToggle
 }) => {
   return (
     <li>
-      <label className={todo.completedStatus ? "completed" : undefined}>
+      <label className={todo.completedStatus ? "completed" : undefined} id={todo.id.toString()}>
         <input
           type="checkbox"
           checked={todo.completedStatus}

@@ -6,6 +6,7 @@ interface TodoListProps {
   todoToggle: TodoToggle;
 }
 
+
 export const TodoList: React.FunctionComponent<TodoListProps> = ({
   todoItems,
   todoToggle,
@@ -13,7 +14,7 @@ export const TodoList: React.FunctionComponent<TodoListProps> = ({
   return (
     <ul>
       {todoItems.map((todoItem) => {
-        return <TodoItem todo={todoItem} todoToggle={todoToggle} />;
+        return <TodoItem todo={todoItem} todoToggle={todoToggle}/>;
       })}
     </ul>
   );
