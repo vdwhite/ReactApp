@@ -3,8 +3,6 @@ import TodoList from "./todoList";
 // Function passed in from props
 const Form = (props: any) => {
   // Functions
-  console.log("props");
-  console.log(props);
   const inputTextHanlder = (e: any) => {
     props.setInputText(e.target.value);
   };
@@ -21,8 +19,6 @@ const Form = (props: any) => {
       },
     ]);
 
-    console.log("submitted");
-    console.log(props.todos);
     await props.setInputText("");
   };
 
@@ -45,10 +41,10 @@ const Form = (props: any) => {
           <option value="uncompleted"> Uncompleted </option>
         </select>
       </div>
-      {console.log("returned: ")}
-      {console.log(props.todos)}
-      {console.log("passed to:" + props.todos.length)}
-      <TodoList todos={props.todos} />
+      <TodoList
+        todos={props.todos}
+        updateTodoCompleted={props.updateTodoCompleted}
+      />
     </form>
   );
 };

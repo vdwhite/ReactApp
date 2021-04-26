@@ -1,19 +1,35 @@
 import React from "react";
 import Todo from "./todo";
-const TodoList = (todos: any) => {
-  console.log("todolist length: " + todos.length);
+const TodoList = (props: any) => {
+  type ITodoProps = {
+    text: string;
+    id: number;
+    completed: boolean;
+  };
+
+  type ITodoListProps = {
+    todos: ITodoProps[];
+    updateTodoCompleted(index: number): void;
+  };
+
+  const { todos = [], updateTodoCompleted } = props;
+
   return (
     <div className="todo-container">
       <ul className="todo-list">
-        {console.log("show me: " + todos.length)}
-        {todos.length > 0
-          ? todos.maps((item: any) => {
-              return <Todo props={item} />;
-            })
-          : console.log("returned empty")}
-        {/* {todos.map((a: any) => (
-          <Todo props={a} />
-        ))} */}
+        {todos.map((item: ITodoProps, index: number) => {
+          const { text, id, completed } = item;
+          return (
+            <Todo
+              text={text}
+              id={id}
+              completed={completed}
+              itemIndex={index}
+              updateTodoCompleted={updateTodoCompleted}
+              key={index}
+            />
+          );
+        })}
       </ul>
     </div>
   );

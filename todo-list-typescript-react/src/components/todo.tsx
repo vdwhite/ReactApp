@@ -1,12 +1,21 @@
 import React from "react";
 
+type ITodoProps = {
+  text: string;
+  id: number;
+  completed: boolean;
+};
+
 const Todo = (props: any) => {
-  console.log("what?");
-  console.log(props);
   return (
-    <div className="todo">
-      <li className="todo-item">asd</li>
-      <button className="check">check</button>
+    <div className={props.completed ? `todoSelected` : `todoNotSelected`}>
+      <li className="todo-item">{props.text}</li>
+      <button
+        className="check"
+        onClick={(e) => props.updateTodoCompleted(e, props.itemIndex)}
+      >
+        check
+      </button>
     </div>
   );
 };
