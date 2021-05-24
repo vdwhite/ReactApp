@@ -4,7 +4,7 @@ const TodoList = (props: any) => {
   type ITodoProps = {
     text: string;
     id: number;
-    completed: boolean;
+    completedStatus: boolean;
   };
 
   type ITodoListProps = {
@@ -18,12 +18,12 @@ const TodoList = (props: any) => {
     <div className="todo-container">
       <ul className="todo-list">
         {todos.map((item: ITodoProps, index: number) => {
-          const { text, id, completed } = item;
+          const { text, id, completedStatus } = item;
           return (
             <Todo
               text={text}
               id={id}
-              completed={completed}
+              completed={completedStatus}
               itemIndex={index}
               updateTodoCompleted={updateTodoCompleted}
               key={index}
