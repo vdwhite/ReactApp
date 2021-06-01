@@ -33,7 +33,6 @@ const Form = (props: any) => {
       <button className="todo-button" type="submit" onClick={submitTodoHandler}>
         Add
       </button>
-
       <div className="select">
         <select name="todos" className="filter-todo">
           <option value="all"> All </option>
@@ -44,6 +43,7 @@ const Form = (props: any) => {
       <TodoList
         todos={props.todos}
         updateTodoCompleted={props.updateTodoCompleted}
+        removeTodoItem={props.removeTodoItem}
       />
     </form>
   );

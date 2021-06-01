@@ -6,6 +6,14 @@ type ITodoProps = {
   completed: boolean;
 };
 
+// const removeTodoHandler = async (e: any) => {
+//   // stop refreshing
+//   await e.preventDefault();
+//   props.setTodos(() => {});
+
+//   await props.setInputText("");
+// };
+
 const Todo = (props: any) => {
   return (
     <div className={props.completed ? `todoSelected` : `todoNotSelected`}>
@@ -15,6 +23,13 @@ const Todo = (props: any) => {
         onClick={(e) => props.updateTodoCompleted(e, props.itemIndex)}
       >
         check
+      </button>
+
+      <button
+        className="delete"
+        onClick={(e) => props.removeTodoItem(e, props.itemIndex)}
+      >
+        remove
       </button>
     </div>
   );

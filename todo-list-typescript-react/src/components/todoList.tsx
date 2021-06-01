@@ -10,9 +10,10 @@ const TodoList = (props: any) => {
   type ITodoListProps = {
     todos: ITodoProps[];
     updateTodoCompleted(index: number): void;
+    removeTodoItem(index: number): void;
   };
 
-  const { todos = [], updateTodoCompleted } = props;
+  const { todos = [], updateTodoCompleted, removeTodoItem } = props;
 
   return (
     <div className="todo-container">
@@ -26,6 +27,7 @@ const TodoList = (props: any) => {
               completed={completedStatus}
               itemIndex={index}
               updateTodoCompleted={updateTodoCompleted}
+              removeTodoItem={removeTodoItem}
               key={index}
             />
           );

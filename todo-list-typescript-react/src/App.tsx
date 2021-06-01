@@ -21,12 +21,35 @@ function App() {
     e.preventDefault();
   };
 
+  const removeTodoItem = (e: any, index: number) => {
+    let newTodos: any = [...todos];
+
+    const DELETE_ITEM_ID: number = newTodos[index].id;
+
+    const requestOptions = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newTodos[index]),
+    };
+    newTodos.splice(index, 1);
+    const response = fetch(
+      "https://iu9ku2mwp2.execute-api.us-west-2.amazonaws.com/todos",
+      requestOptions,
+    );
+    setTodos(newTodos);
+    console.log(newTodos);
+    e.preventDefault();
+  };
+
   const props = {
     inputText: inputText,
     setInputText: setInputText,
     todos: todos,
     setTodos: setTodos,
     updateTodoCompleted,
+    removeTodoItem,
   };
 
   useEffect(() => {
