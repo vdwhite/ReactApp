@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, Checkbox } from "semantic-ui-react";
 
 type ITodoProps = {
   text: string;
@@ -18,19 +19,21 @@ const Todo = (props: any) => {
   return (
     <div className={props.completed ? `todoSelected` : `todoNotSelected`}>
       <li className="todo-item">{props.text}</li>
-      <button
+      <Checkbox
+        toggle
         className="check"
         onClick={(e) => props.updateTodoCompleted(e, props.itemIndex)}
       >
         check
-      </button>
+      </Checkbox>
 
-      <button
+      <Button
+        negative
         className="delete"
         onClick={(e) => props.removeTodoItem(e, props.itemIndex)}
       >
-        remove
-      </button>
+        REMOVE
+      </Button>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, Dropdown } from "semantic-ui-react";
 import TodoList from "./todoList";
 // Function passed in from props
 const Form = (props: any) => {
@@ -8,16 +9,29 @@ const Form = (props: any) => {
   };
 
   const submitTodoHandler = async (e: any) => {
-    // stop refreshing
-    await e.preventDefault();
-    props.setTodos([
-      ...props.todos,
-      {
-        text: props.inputText,
-        completed: false,
-        id: Math.floor(Math.random() * 999 + 1),
+    const newTodoId: number = Math.floor(Math.random() * 999 + 1);
+    const newTodoItem = {
+      text: props.inputText,
+      completedStatus: false,
+      id: newTodoId,
+    };
+    const requestOptions = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
       },
-    ]);
+      body: JSON.stringify(newTodoItem),
+    };
+
+    const response = fetch(
+      "https://iu9ku2mwp2.execute-api.us-west-2.amazonaws.com/todos",
+      requestOptions,
+    );
+    // stop refreshing
+    console.log(response);
+
+    await e.preventDefault();
+    props.setTodos([...props.todos, newTodoItem]);
 
     await props.setInputText("");
   };
@@ -30,9 +44,15 @@ const Form = (props: any) => {
         type="text"
         className="todo-input"
       />
-      <button className="todo-button" type="submit" onClick={submitTodoHandler}>
-        Add
-      </button>
+      <Button
+        primary
+        className="todo-button"
+        type="submit"
+        onClick={submitTodoHandler}
+      >
+        {"Add Todo"}
+      </Button>
+
       <div className="select">
         <select name="todos" className="filter-todo">
           <option value="all"> All </option>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Form from "./components/form";
 import "./css/todoItem.css";
+import "semantic-ui-css/semantic.min.css";
 
 type ITodoProps = {
   text: string;
