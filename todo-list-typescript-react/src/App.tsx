@@ -11,7 +11,17 @@ type ITodoProps = {
 
 function App() {
   const [inputText, setInputText] = useState("");
+  const [editingText, setEditingText] = useState("");
   const [todos, setTodos] = useState<ITodoProps[]>([]);
+
+  const editTodoItem = (e: any, index: number) => {
+    let newTodo: any = todos[index];
+    setEditingText(newTodo.text);
+
+    console.log("hello... edit todo item again");
+    console.log(props);
+    e.preventDefault();
+  };
 
   const updateTodoCompleted = (e: any, index: number) => {
     let newTodo: any = todos[index];
@@ -51,6 +61,7 @@ function App() {
     setTodos: setTodos,
     updateTodoCompleted,
     removeTodoItem,
+    editTodoItem,
   };
 
   useEffect(() => {
@@ -75,10 +86,12 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <h1>Todo List React</h1>
-      </header>
-      <Form {...props} />
+      <div className="ui center aligned fluid container">
+        <header>
+          <h1>Todo List React</h1>
+        </header>
+        <Form {...props} />
+      </div>
     </div>
   );
 }

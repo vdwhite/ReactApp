@@ -1,3 +1,7 @@
 .todoSelected {
   text-decoration: line-through;
 }
+
+.hidden {
+  visibility: hidden;
+}

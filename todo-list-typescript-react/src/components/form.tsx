@@ -27,43 +27,40 @@ const Form = (props: any) => {
       "https://iu9ku2mwp2.execute-api.us-west-2.amazonaws.com/todos",
       requestOptions,
     );
-    // stop refreshing
-    console.log(response);
 
     await e.preventDefault();
     props.setTodos([...props.todos, newTodoItem]);
 
     await props.setInputText("");
   };
-
   return (
     <form>
-      <input
-        value={props.inputText}
-        onChange={inputTextHanlder}
-        type="text"
-        className="todo-input"
-      />
-      <Button
-        primary
-        className="todo-button"
-        type="submit"
-        onClick={submitTodoHandler}
-      >
-        {"Add Todo"}
-      </Button>
+      <div className="ui grid center aligned ">
+        <div className="sixteen wide mobile eight wide tablet three wide computer column">
+          <input
+            value={props.inputText}
+            onChange={inputTextHanlder}
+            type="text"
+            className="todo-input"
+          />
+        </div>
 
-      <div className="select">
-        <select name="todos" className="filter-todo">
-          <option value="all"> All </option>
-          <option value="completed"> Completed </option>
-          <option value="uncompleted"> Uncompleted </option>
-        </select>
+        <div className="sixteen wide mobile eight wide tablet three wide computer column">
+          <Button
+            primary
+            className="todo-button"
+            type="submit"
+            onClick={submitTodoHandler}
+          >
+            {"Add Todo"}
+          </Button>
+        </div>
       </div>
       <TodoList
         todos={props.todos}
         updateTodoCompleted={props.updateTodoCompleted}
         removeTodoItem={props.removeTodoItem}
+        editTodoItem={props.editTodoItem}
       />
     </form>
   );

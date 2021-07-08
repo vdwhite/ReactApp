@@ -7,33 +7,46 @@ type ITodoProps = {
   completed: boolean;
 };
 
-// const removeTodoHandler = async (e: any) => {
-//   // stop refreshing
-//   await e.preventDefault();
-//   props.setTodos(() => {});
-
-//   await props.setInputText("");
-// };
-
 const Todo = (props: any) => {
   return (
-    <div className={props.completed ? `todoSelected` : `todoNotSelected`}>
-      <li className="todo-item">{props.text}</li>
-      <Checkbox
-        toggle
-        className="check"
-        onClick={(e) => props.updateTodoCompleted(e, props.itemIndex)}
-      >
-        check
-      </Checkbox>
+    <div className="ui bulleted list">
+      <div className="ui left aligned container">
+        <div className="item">
+          <div className={props.completed ? `todoSelected` : `todoNotSelected`}>
+            <div
+              className="todo-item"
+              onClick={(e) => props.updateTodoCompleted(e, props.itemIndex)}
+            >
+              {props.text}
+            </div>
+            <input className="ui hidden" type="text" />
 
-      <Button
-        negative
-        className="delete"
-        onClick={(e) => props.removeTodoItem(e, props.itemIndex)}
-      >
-        REMOVE
-      </Button>
+            <Button
+              negative
+              className="delete"
+              onClick={(e) => props.removeTodoItem(e, props.itemIndex)}
+            >
+              REMOVE
+            </Button>
+
+            <Button
+              negative
+              className="edit"
+              onClick={(e) => props.editTodoItem(e, props.itemIndex)}
+            >
+              EDIT
+            </Button>
+          </div>
+          <div className="ui left aligned container">
+            <input
+              type="checkbox"
+              name="example"
+              onClick={(e) => props.updateTodoCompleted(e, props.itemIndex)}
+            />
+            <label>Check</label>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
