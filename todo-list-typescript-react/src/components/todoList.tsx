@@ -22,26 +22,30 @@ const TodoList = (props: any) => {
   } = props;
 
   return (
-    <div className="ui grid">
-      <div className="todo-container">
-        <ul className="todo-list">
-          {todos.map((item: ITodoProps, index: number) => {
-            const { text, id, completedStatus } = item;
-            return (
-              <Todo
-                text={text}
-                id={id}
-                completed={completedStatus}
-                itemIndex={index}
-                updateTodoCompleted={updateTodoCompleted}
-                removeTodoItem={removeTodoItem}
-                editTodoItem={editTodoItem}
-                key={index}
-              />
-            );
-          })}
-        </ul>
-      </div>
+    <div className="ui grid centered one column ui center aligned ">
+      <ul
+        className={
+          props.todos.length > 0
+            ? `ui grid centered one column center aligned border`
+            : `ui grid centered one column center aligned`
+        }
+      >
+        {todos.map((item: ITodoProps, index: number) => {
+          const { text, id, completedStatus } = item;
+          return (
+            <Todo
+              text={text}
+              id={id}
+              completed={completedStatus}
+              itemIndex={index}
+              updateTodoCompleted={updateTodoCompleted}
+              removeTodoItem={removeTodoItem}
+              editTodoItem={editTodoItem}
+              key={index}
+            />
+          );
+        })}
+      </ul>
     </div>
   );
 };

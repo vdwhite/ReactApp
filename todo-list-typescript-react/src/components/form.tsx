@@ -35,7 +35,7 @@ const Form = (props: any) => {
   };
   return (
     <form>
-      <div className="ui grid center aligned ">
+      <div className="ui grid center aligned">
         <div className="sixteen wide mobile eight wide tablet three wide computer column">
           <input
             value={props.inputText}
