@@ -28,14 +28,7 @@ const Todo = (props: any) => {
         </Button>
 
         <Button
-          className="edit"
-          onClick={(e) => props.editTodoItem(e, props.itemIndex)}
-        >
-          EDIT
-        </Button>
-
-        <Button
-          className="edit"
+          className="check"
           onClick={(e) => props.updateTodoCompleted(e, props.itemIndex)}
         >
           CHECK

@@ -14,12 +14,7 @@ const TodoList = (props: any) => {
     editTodoItem(index: number): void;
   };
 
-  const {
-    todos = [],
-    updateTodoCompleted,
-    removeTodoItem,
-    editTodoItem,
-  } = props;
+  const { todos = [], updateTodoCompleted, removeTodoItem } = props;
 
   return (
     <div className="ui grid centered one column ui center aligned ">
@@ -40,7 +35,6 @@ const TodoList = (props: any) => {
               itemIndex={index}
               updateTodoCompleted={updateTodoCompleted}
               removeTodoItem={removeTodoItem}
-              editTodoItem={editTodoItem}
               key={index}
             />
           );

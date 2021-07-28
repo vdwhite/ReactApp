@@ -60,7 +60,6 @@ const Form = (props: any) => {
         todos={props.todos}
         updateTodoCompleted={props.updateTodoCompleted}
         removeTodoItem={props.removeTodoItem}
-        editTodoItem={props.editTodoItem}
       />
     </form>
   );
