@@ -1,5 +1,15 @@
 .todoSelected {
-  text-decoration: line-through;
+  position: relative;
+  white-space: nowrap; /* would center line-through in the middle of the wrapped lines */
+}
+
+.todoSelected:after {
+  border-top: 1px solid #000;
+  position: absolute;
+  content: "";
+  right: 33%;
+  top: 50%;
+  left: 33%;
 }
 
 .hidden {
@@ -8,4 +18,8 @@
 
 .border {
   border: 1px solid black;
+}
+
+.large-text {
+  font-size: 2rem;
 }

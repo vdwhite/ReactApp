@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Checkbox } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 
 type ITodoProps = {
   text: string;
@@ -11,28 +11,30 @@ const Todo = (props: any) => {
   return (
     <div className="item border">
       <div className={props.completed ? `todoSelected` : `todoNotSelected`}>
-        <div
-          className="todo-item"
-          onClick={(e) => props.updateTodoCompleted(e, props.itemIndex)}
-        >
-          {props.text}
+        <div className="todo-item">
+          <span
+            className={props.completed ? `todoSelected` : `todoNotSelected`}
+          >
+            {props.text}
+          </span>
+
+          <Button
+            negative
+            className="delete"
+            onClick={(e) => props.removeTodoItem(e, props.itemIndex)}
+          >
+            <span>REMOVE </span>
+            <i className="trash alternate outline icon"></i>
+          </Button>
+
+          <Button
+            className="check"
+            onClick={(e) => props.updateTodoCompleted(e, props.itemIndex)}
+          >
+            <i className="check icon"></i>
+            <span>CHECK</span>
+          </Button>
         </div>
-        <input className="ui hidden" type="text" />
-
-        <Button
-          negative
-          className="delete"
-          onClick={(e) => props.removeTodoItem(e, props.itemIndex)}
-        >
-          REMOVE
-        </Button>
-
-        <Button
-          className="check"
-          onClick={(e) => props.updateTodoCompleted(e, props.itemIndex)}
-        >
-          CHECK
-        </Button>
       </div>
     </div>
   );
