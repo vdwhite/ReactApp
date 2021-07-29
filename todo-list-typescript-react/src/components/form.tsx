@@ -16,7 +16,7 @@ const Form = (props: any) => {
       id: newTodoId,
     };
     const requestOptions = {
-      method: "PUT",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },

@@ -14,12 +14,29 @@ function App() {
 
   const [todos, setTodos] = useState<ITodoProps[]>([]);
 
-  const updateTodoCompleted = (e: any, index: number) => {
+  const updateTodoCompleted =  (e: any, index: number) => {
     let newTodo: any = todos[index];
     newTodo.completedStatus = !newTodo.completedStatus;
     let newTodos: any = [...todos];
     newTodos[index] = newTodo;
     setTodos(newTodos);
+
+    const UPDATE_ITEM_ID: number =newTodos[index].id;
+
+    const requestOptions = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTodos[index]),
+      };
+
+    const response =  fetch(
+        "https://iu9ku2mwp2.execute-api.us-west-2.amazonaws.com/todos",
+        requestOptions,
+    );
+
+    console.log(response);
     e.preventDefault();
   };
 
@@ -35,6 +52,7 @@ function App() {
       },
       body: JSON.stringify(newTodos[index]),
     };
+    
     newTodos.splice(index, 1);
     const response = fetch(
       "https://iu9ku2mwp2.execute-api.us-west-2.amazonaws.com/todos",
