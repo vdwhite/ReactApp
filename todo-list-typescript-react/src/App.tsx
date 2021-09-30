@@ -9,21 +9,33 @@ type ITodoProps = {
   completedStatus: boolean;
 };
 
+
+ function fetchData(uri:string, requestOptions:any){
+    try {
+        const RESPONSE  = fetch(
+            uri,
+            requestOptions,
+        )
+        return RESPONSE;
+    } catch (e){
+        console.error(e);
+        return null;
+    }
+}
+
 function App() {
   const [inputText, setInputText] = useState("");
-
   const [todos, setTodos] = useState<ITodoProps[]>([]);
+  const REQUEST_URI: string ="https://iu9ku2mwp2.execute-api.us-west-2.amazonaws.com/todos";
 
-  const updateTodoCompleted =  (e: any, index: number) => {
+  const updateTodoCompleted =  async (e: any, index: number) => {
     let newTodo: any = todos[index];
     newTodo.completedStatus = !newTodo.completedStatus;
     let newTodos: any = [...todos];
     newTodos[index] = newTodo;
     setTodos(newTodos);
 
-    const UPDATE_ITEM_ID: number =newTodos[index].id;
-
-    const requestOptions = {
+    const REQUEST_OPTIONS = {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -31,35 +43,28 @@ function App() {
         body: JSON.stringify(newTodos[index]),
       };
 
-    const response =  fetch(
-        "https://iu9ku2mwp2.execute-api.us-west-2.amazonaws.com/todos",
-        requestOptions,
-    );
 
-    console.log(response);
+    fetchData(REQUEST_URI, REQUEST_OPTIONS);
+
     e.preventDefault();
   };
 
-  const removeTodoItem = (e: any, index: number) => {
+  const removeTodoItem = async (e: any, index: number) => {
     let newTodos: any = [...todos];
 
-    const DELETE_ITEM_ID: number = newTodos[index].id;
 
-    const requestOptions = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newTodos[index]),
-    };
-    
+    const REQUEST_OPTIONS = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTodos[index]),
+      };
+
     newTodos.splice(index, 1);
-    const response = fetch(
-      "https://iu9ku2mwp2.execute-api.us-west-2.amazonaws.com/todos",
-      requestOptions,
-    );
+    fetchData(REQUEST_URI, REQUEST_OPTIONS)
+
     setTodos(newTodos);
-    console.log(newTodos);
     e.preventDefault();
   };
 
@@ -74,17 +79,15 @@ function App() {
 
   useEffect(() => {
     async function getAllItemsFromEndPoints() {
-      const requestOptions = {
+
+      const REQUEST_OPTIONS = {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
       };
-      const response = await fetch(
-        "https://iu9ku2mwp2.execute-api.us-west-2.amazonaws.com/todos",
-        requestOptions,
-      );
-      const data = await response.json();
+      const RESPONSE:any = await fetchData(REQUEST_URI, REQUEST_OPTIONS);
+      const data = await RESPONSE.json();
       if (todos.length === 0) {
         setTodos(data);
       }
@@ -94,7 +97,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="ui center aligned fluid container">
+      <div className="ui center aligned header">
         <header>
           <h1>Todo List React</h1>
         </header>

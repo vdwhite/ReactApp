@@ -4,8 +4,8 @@ import TodoList from "./todoList";
 // Function passed in from props
 const Form = (props: any) => {
   // Functions
-  const inputTextHanlder = (e: any) => {
-    props.setInputText(e.target.value);
+  const inputTextHandler = (e: any) => {
+      props.setInputText(e.target.value);
   };
 
   const submitTodoHandler = async (e: any) => {
@@ -35,31 +35,28 @@ const Form = (props: any) => {
   };
   return (
     <form>
-      <div className="ui grid center aligned">
-        <div className="sixteen wide mobile eight wide tablet three wide computer column">
           <input
             value={props.inputText}
-            onChange={inputTextHanlder}
+            onChange={inputTextHandler}
             type="text"
             className="todo-input"
           />
-        </div>
 
-        <div className="sixteen wide mobile eight wide tablet three wide computer column">
           <Button
             primary
-            className="todo-button"
+            disabled={!props.inputText.trim()}
+            className={!props.inputText.trim()?"ui blue todo-button":"ui inverted blue todo-button"}
             type="submit"
             onClick={submitTodoHandler}
+
           >
             {"Add Todo"}
           </Button>
-        </div>
-      </div>
       <TodoList
         todos={props.todos}
         updateTodoCompleted={props.updateTodoCompleted}
         removeTodoItem={props.removeTodoItem}
+        className = 'ui text container'
       />
     </form>
   );
