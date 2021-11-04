@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Dropdown } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import TodoList from "./todoList";
 // Function passed in from props
 const Form = (props: any) => {
@@ -23,7 +23,7 @@ const Form = (props: any) => {
       body: JSON.stringify(newTodoItem),
     };
 
-    const response = fetch(
+    await fetch(
       "https://iu9ku2mwp2.execute-api.us-west-2.amazonaws.com/todos",
       requestOptions,
     );
@@ -40,15 +40,15 @@ const Form = (props: any) => {
             onChange={inputTextHandler}
             type="text"
             className="todo-input"
+            placeholder="What I am going to do..."
           />
 
           <Button
             primary
-            disabled={!props.inputText.trim()}
-            className={!props.inputText.trim()?"ui blue todo-button":"ui inverted blue todo-button"}
+            disabled={props.inputText && !props.inputText.trim()}
+            className={props.inputText && !props.inputText.trim()?"ui blue todo-button":"ui inverted blue todo-button"}
             type="submit"
             onClick={submitTodoHandler}
-
           >
             {"Add Todo"}
           </Button>

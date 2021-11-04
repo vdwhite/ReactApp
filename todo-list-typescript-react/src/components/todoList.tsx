@@ -17,7 +17,7 @@ const TodoList = (props: any) => {
   const { todos = [], updateTodoCompleted, removeTodoItem } = props;
 
   return (
-      <div className='ui text container'>
+      <div className='ui text container todo-list'>
         <ul>
             {todos.map((item: ITodoProps, index: number) => {
             const { text, id, completedStatus } = item;
