@@ -5,7 +5,7 @@ import TodoList from "./todoList";
 const Form = (props: any) => {
   // Functions
   const inputTextHandler = (e: any) => {
-      props.setInputText(e.target.value);
+    props.setInputText(e.target.value);
   };
 
   const submitTodoHandler = async (e: any) => {
@@ -35,28 +35,32 @@ const Form = (props: any) => {
   };
   return (
     <form>
-          <input
-            value={props.inputText}
-            onChange={inputTextHandler}
-            type="text"
-            className="todo-input"
-            placeholder="What I am going to do..."
-          />
+      <input
+        value={props.inputText}
+        onChange={inputTextHandler}
+        type="text"
+        className="todo-input"
+        placeholder="What I am going to do..."
+      />
 
-          <Button
-            primary
-            disabled={props.inputText && !props.inputText.trim()}
-            className={props.inputText && !props.inputText.trim()?"ui blue todo-button":"ui inverted blue todo-button"}
-            type="submit"
-            onClick={submitTodoHandler}
-          >
-            {"Add Todo"}
-          </Button>
+      <Button
+        primary
+        disabled={!(props.inputText && props.inputText.trim())}
+        className={
+          props.inputText && !props.inputText.trim()
+            ? "ui blue todo-button"
+            : "ui inverted blue todo-button"
+        }
+        type="submit"
+        onClick={submitTodoHandler}
+      >
+        {"Add Todo"}
+      </Button>
       <TodoList
         todos={props.todos}
         updateTodoCompleted={props.updateTodoCompleted}
         removeTodoItem={props.removeTodoItem}
-        className = 'ui text container'
+        className="ui text container"
       />
     </form>
   );
