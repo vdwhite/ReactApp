@@ -7,20 +7,16 @@ const TodoList = (props: any) => {
     completedStatus: boolean;
   };
 
-  type ITodoListProps = {
-    todos: ITodoProps[];
-    updateTodoCompleted(index: number): void;
-    removeTodoItem(index: number): void;
-    editTodoItem(index: number): void;
-  };
 
   const { todos = [], updateTodoCompleted, removeTodoItem } = props;
 
   return (
       <div className='ui text container todo-list'>
         <ul>
+            {console.log(todos)}
             {todos.map((item: ITodoProps, index: number) => {
             const { text, id, completedStatus } = item;
+
             return (
                 <Todo
                 text={text}

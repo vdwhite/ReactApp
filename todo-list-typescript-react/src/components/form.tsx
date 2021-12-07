@@ -48,7 +48,7 @@ const Form = (props: any) => {
         primary
         disabled={!(props.inputText && props.inputText.trim())}
         className={
-          props.inputText && !props.inputText.trim()
+          props.inputText && props.inputText.trim()
             ? "ui blue todo-button"
             : "ui inverted blue todo-button"
         }
