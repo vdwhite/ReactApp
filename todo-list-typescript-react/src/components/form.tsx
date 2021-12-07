@@ -8,7 +8,7 @@ const Form = (props: any) => {
     props.setInputText(e.target.value);
   };
 
-  const submitTodoHandler = async (e: any) => {
+  const submitTodoHandler = (e: any) => {
     const newTodoId: number = Math.floor(Math.random() * 999 + 1);
     const newTodoItem = {
       text: props.inputText,
@@ -23,15 +23,16 @@ const Form = (props: any) => {
       body: JSON.stringify(newTodoItem),
     };
 
-    await fetch(
+    const response = fetch(
       "https://iu9ku2mwp2.execute-api.us-west-2.amazonaws.com/todos",
       requestOptions,
     );
 
-    await e.preventDefault();
+    e.preventDefault();
+
     props.setTodos([...props.todos, newTodoItem]);
 
-    await props.setInputText("");
+    props.setInputText("");
   };
   return (
     <form>
