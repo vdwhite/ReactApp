@@ -10,6 +10,7 @@ type ITodoProps = {
 const Todo = (props: any) => {
   return (
     <div className='ui segment'>
+        {console.log('props from todo', props)}
         <div className="todo-item">
           <span
             className={props.completed ? `todoSelected` : `todoNotSelected`}

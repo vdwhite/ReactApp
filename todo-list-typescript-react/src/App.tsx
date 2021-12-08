@@ -10,9 +10,9 @@ type ITodoProps = {
 };
 
 
- function fetchData(uri:string, requestOptions:any){
+async function fetchData(uri:string, requestOptions:any){
     try {
-        const RESPONSE  = fetch(
+        const RESPONSE  = await fetch(
             uri,
             requestOptions,
         )
@@ -87,8 +87,14 @@ function App() {
         },
       };
       const RESPONSE:any = await fetchData(REQUEST_URI, REQUEST_OPTIONS);
-      const data = await RESPONSE.json();
-      if (todos.length === 0) {
+      let data = null;
+      try {
+        data = await RESPONSE.json();
+      } catch (e) {
+        console.error(e);
+      }
+
+      if (todos && todos.length === 0) {
         setTodos(data);
       }
     }

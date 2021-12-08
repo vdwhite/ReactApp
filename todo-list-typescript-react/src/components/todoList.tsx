@@ -12,23 +12,22 @@ const TodoList = (props: any) => {
 
   return (
       <div className='ui text container todo-list'>
-        <ul>
-            {console.log(todos)}
-            {todos.map((item: ITodoProps, index: number) => {
-            const { text, id, completedStatus } = item;
-
-            return (
-                <Todo
-                text={text}
-                id={id}
-                completed={completedStatus}
-                itemIndex={index}
-                updateTodoCompleted={updateTodoCompleted}
-                removeTodoItem={removeTodoItem}
-                key={index}
-                />
-            );
-            })}
+         <ul>           
+            {todos?todos.map((item: ITodoProps, index: number) => {
+                const { text, id, completedStatus } = item;
+                return (
+                    <Todo
+                    text={text}
+                    id={id}
+                    completed={completedStatus}
+                    itemIndex={index}
+                    updateTodoCompleted={updateTodoCompleted}
+                    removeTodoItem={removeTodoItem}
+                    key={index}
+                    />
+                );
+            /*If there is no todos, we return empty div to prevent crash*/
+            }):<div />}
         </ul>
       </div>
   );
