@@ -1,33 +1,30 @@
 #todo-list-header h1 {
-  font-size: 10em;
+  font-size: 8em;
   left: 75%;
 }
 
-.todo-list-form {
-  font-size: 5em;
+.todo-list-form .todo-input {
+  margin-right: 2em;
+  padding: 0.2em;
+}
+.todo-list-form .todo-input:focus::placeholder {
+  color: transparent;
 }
 .todo-list-form .todo-item {
-  font-size: 5em;
+  font-size: 3em;
 }
 .todo-list-form .todo-item button {
   margin-left: 2em;
   width: 10em;
 }
 .todo-list-form .todoSelected {
-  position: relative;
-  white-space: nowrap;
-  /* would center line-through in the middle of the wrapped lines */
+  color: #bdbdbd;
+  opacity: 0.3;
 }
-.todo-list-form .todoSelected:after {
-  border-top: 1px solid #000;
-  position: absolute;
-  content: "";
-  right: 33%;
-  top: 50%;
-  left: 33%;
+.todo-list-form .completedIndicator {
+  font-size: 0.5em;
 }
-
-.hidden {
+.todo-list-form .hidden-completedIndicator {
   visibility: hidden;
 }
 
