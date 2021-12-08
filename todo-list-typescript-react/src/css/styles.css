@@ -1,0 +1,34 @@
+#todo-list-header h1 {
+  font-size: 10em;
+  left: 75%;
+}
+
+.todo-list-form {
+  font-size: 5em;
+}
+.todo-list-form .todo-item {
+  font-size: 5em;
+}
+.todo-list-form .todo-item button {
+  margin-left: 2em;
+  width: 10em;
+}
+.todo-list-form .todoSelected {
+  position: relative;
+  white-space: nowrap;
+  /* would center line-through in the middle of the wrapped lines */
+}
+.todo-list-form .todoSelected:after {
+  border-top: 1px solid #000;
+  position: absolute;
+  content: "";
+  right: 33%;
+  top: 50%;
+  left: 33%;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+/*# sourceMappingURL=styles.css.map */

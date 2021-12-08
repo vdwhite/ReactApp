@@ -1,0 +1,39 @@
+// variables
+$large_font_size: 10em;
+$medium_font_size: 5em;
+$button_margin_left: 2em;
+$button_padding: 10em;
+$button_width: 10em;
+#todo-list-header {
+  h1 {
+    font-size: $large_font_size;
+    left: 75%;
+  }
+}
+.todo-list-form {
+  font-size: $medium_font_size;
+
+  .todo-item {
+    font-size: $medium_font_size;
+    button {
+      margin-left: $button_margin_left;
+      width: $button_width;
+    }
+  }
+  .todoSelected {
+    position: relative;
+    white-space: nowrap; /* would center line-through in the middle of the wrapped lines */
+    &:after {
+      border-top: 1px solid #000;
+      position: absolute;
+      content: "";
+      right: 33%;
+      top: 50%;
+      left: 33%;
+    }
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}

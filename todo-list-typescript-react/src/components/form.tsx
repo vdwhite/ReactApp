@@ -23,19 +23,23 @@ const Form = (props: any) => {
       body: JSON.stringify(newTodoItem),
     };
 
-    const response = fetch(
-      "https://iu9ku2mwp2.execute-api.us-west-2.amazonaws.com/todos",
-      requestOptions,
-    );
+    try {
+      props.setTodos([...props.todos, newTodoItem]);
 
-    e.preventDefault();
+      props.setInputText("");
 
-    props.setTodos([...props.todos, newTodoItem]);
+      fetch(
+        "https://iu9ku2mwp2.execute-api.us-west-2.amazonaws.com/todos",
+        requestOptions,
+      );
 
-    props.setInputText("");
+      e.preventDefault();
+    } catch (e) {
+      console.error(e);
+    }
   };
   return (
-    <form>
+    <form className="ui center aligned header todo-list-form ">
       <input
         value={props.inputText}
         onChange={inputTextHandler}
