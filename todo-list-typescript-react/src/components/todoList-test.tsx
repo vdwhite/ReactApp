@@ -20,4 +20,11 @@ describe("TodoList", () => {
     expect(screen.getByText(/text1/i)).toBeInTheDocument();
     expect(screen.getByText(/text2/i)).toBeInTheDocument();
   });
+
+  it("should not render the component if todo list is empty", async () => {
+    render(<TodoList todos={[]} />);
+    const todoListSelector = screen.queryByTestId(`todo-list`);
+    expect(todoListSelector).not.toBeInTheDocument();
+  });
+
 });
