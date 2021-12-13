@@ -6,19 +6,21 @@ describe("TodoList", () => {
   it("should render the component if todo list is not empty", async () => {
     const mockTodos = [
       {
-        text: "text1",
+        text: "I need to eat breakfast",
         id: 123,
         completedStatus: false,
       },
       {
-        text: "text2",
+        text: "Maybe some breakfast burritos",
         id: 234,
         completedStatus: true,
       },
     ];
     render(<TodoList todos={mockTodos} />);
-    expect(screen.getByText(/text1/i)).toBeInTheDocument();
-    expect(screen.getByText(/text2/i)).toBeInTheDocument();
+    expect(screen.getByText(/^I need to eat breakfast$/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/^Maybe some breakfast burritos$/i),
+    ).toBeInTheDocument();
   });
 
   it("should not render the component if todo list is empty", async () => {
@@ -26,5 +28,4 @@ describe("TodoList", () => {
     const todoListSelector = screen.queryByTestId(`todo-list`);
     expect(todoListSelector).not.toBeInTheDocument();
   });
-
 });

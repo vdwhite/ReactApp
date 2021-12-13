@@ -60,9 +60,10 @@ function App() {
     setTodos(newTodos);
     try {
       fetchData(REQUEST_URI, REQUEST_OPTIONS);
-      e.preventDefault();
     } catch (e) {
       console.error(e);
+    } finally {
+      e.preventDefault();
     }
   };
 
@@ -99,7 +100,7 @@ function App() {
   });
 
   return (
-    <div className="App">
+    <div className="App landing-image">
       <div>
         <header id="todo-list-header">
           <h1>Todo List React</h1>

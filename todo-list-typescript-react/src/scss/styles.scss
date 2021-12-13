@@ -1,45 +1,63 @@
-// variables
+// variables for fonts
 $large_font_size: 8em;
 $medium_font_size: 3em;
 $small_font_size: 0.5em;
 $done_color: #bdbdbd;
 
-// Variables for margins
+// Variables for styles
 $button_margin_left: 2em;
 $button_padding: 10em;
 $button_width: 10em;
+$header_margin_left: 1em;
+$background_path: "background.jpg";
+
+#root,
+.App {
+  height: 100%;
+}
+
+.landing-image {
+  background: url("../css/background.jpg") repeat 0 0;
+}
 
 #todo-list-header {
   h1 {
     font-size: $large_font_size;
-    left: 75%;
+    position: relative;
+    padding-left: $header_margin_left;
   }
 }
 .todo-list-form {
-//   font-size: $medium_font_size;
-
-  .todo-input{
-    margin-right:$button_margin_left;
-    padding:0.2em;
-    &:focus::placeholder{
-        color: transparent;
+  .todo-input {
+    background: rgba(255, 255, 255, 0.3);
+    margin-right: $button_margin_left;
+    padding: 0.2em;
+    &:focus::placeholder {
+      color: transparent;
+    }
+    &:focus {
+      background: rgba(255, 255, 255, 0.3);
     }
   }
-  .todo-item {
-    font-size: $medium_font_size;
-    button {
-      margin-left: $button_margin_left;
-      width: $button_width;
+  ul {
+    .todo-item-card {
+      background: rgba(255, 255, 255, 0.3);
+      .todo-item {
+        font-size: $medium_font_size;
+        button {
+          margin-left: $button_margin_left;
+          width: $button_width;
+        }
+      }
     }
   }
   .todoSelected {
     color: $done_color;
-    opacity: 0.3;
   }
-  .completedIndicator{
+  .completedIndicator {
     font-size: $small_font_size;
   }
-  .hidden-completedIndicator{
-    visibility:hidden;
+  .hidden-completedIndicator {
+    visibility: hidden;
   }
 }

@@ -1,25 +1,41 @@
+#root,
+.App {
+  height: 100%;
+}
+
+.landing-image {
+  background: url("../css/background.jpg") repeat 0 0;
+}
+
 #todo-list-header h1 {
   font-size: 8em;
-  left: 75%;
+  position: relative;
+  padding-left: 1em;
 }
 
 .todo-list-form .todo-input {
+  background: rgba(255, 255, 255, 0.3);
   margin-right: 2em;
   padding: 0.2em;
 }
 .todo-list-form .todo-input:focus::placeholder {
   color: transparent;
 }
-.todo-list-form .todo-item {
+.todo-list-form .todo-input:focus {
+  background: rgba(255, 255, 255, 0.3);
+}
+.todo-list-form ul .todo-item-card {
+  background: rgba(255, 255, 255, 0.3);
+}
+.todo-list-form ul .todo-item-card .todo-item {
   font-size: 3em;
 }
-.todo-list-form .todo-item button {
+.todo-list-form ul .todo-item-card .todo-item button {
   margin-left: 2em;
   width: 10em;
 }
 .todo-list-form .todoSelected {
   color: #bdbdbd;
-  opacity: 0.3;
 }
 .todo-list-form .completedIndicator {
   font-size: 0.5em;
