@@ -9,8 +9,14 @@
 
 #todo-list-header h1 {
   font-size: 8em;
-  position: relative;
   padding-left: 1em;
+}
+#todo-list-header span {
+  color: white;
+  padding-left: 5%;
+}
+#todo-list-header span a {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .todo-list-form .todo-input {

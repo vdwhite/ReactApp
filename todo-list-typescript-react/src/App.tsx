@@ -104,6 +104,12 @@ function App() {
       <div>
         <header id="todo-list-header">
           <h1>Todo List React</h1>
+          <span>
+            Credit of background image:
+            <a href="https://wallpaperaccess.com/mount-hood">
+              https://wallpaperaccess.com/mount-hood
+            </a>
+          </span>
         </header>
         <Form {...props} className="ui center aligned header" />
       </div>
