@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import {render, screen } from "@testing-library/react";
 import React from "react";
 import Form from "./form";
 
@@ -19,5 +19,4 @@ describe("Form", () => {
     render(<Form inputText={'123'}/>);
     expect(screen.getByText(/Add Todo/i).closest('button')).not.toBeDisabled();
   });
-
 });

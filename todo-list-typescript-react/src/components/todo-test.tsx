@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import Todo from "./todo"
-import { Button } from 'semantic-ui-react';
+
 
 const mockTodoProps = 
 {
