@@ -1,5 +1,8 @@
+import './components/categories/categories.styles.scss';
+
+import Categories from './components/categories/categories.component';
 const App = () => {
-  return <div>Hello this is crown clothing</div>;
+  return <Categories />;
 };
 
 export default App;
