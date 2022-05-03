@@ -1,8 +1,8 @@
-import './components/categories/categories.styles.scss';
+import categoriesData from './components/data/categories';
 
-import Categories from './components/categories/categories.component';
+import Directory from './components/directory/directory.component';
 const App = () => {
-  return <Categories />;
+  return <Directory categoriesData={categoriesData} />;
 };
 
 export default App;
